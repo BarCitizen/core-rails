@@ -27,6 +27,7 @@
 - name: Install Ruby via RBENV
   ansible.builtin.shell:
     cmd: |
+      source /root/.bashrc
       rbenv install {{ rbenv.version}} 
       rbenv global {{ rbenv.version}}
       rbenv rehash
@@ -34,5 +35,6 @@
 - name: Install Gems
   ansible.builtin.shell:
     cmd: |
+      source /root/.bashrc
       gem install bundler
       gem install rails -v {{ rails.version }}
