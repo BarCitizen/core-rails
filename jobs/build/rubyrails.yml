@@ -1,0 +1,47 @@
+---
+- name: Make sure we have everything for ruby
+  apt:
+    pkg:
+      - ruby-build
+      - libssl-dev
+      - libreadline-dev 
+      - zlib1g-dev 
+      - autoconf 
+      - bison 
+      - build-essential 
+      - libyaml-dev 
+      - libreadline-dev 
+      - libncurses5-dev 
+      - libffi-dev 
+      - libgdbm-dev
+    state: latest
+- name: Drop setup script
+  ansible.builtin.template:
+    src: "{{ playbook_dir }}/templates/ruby-setup.j2"
+    dest: "/usr/local/bin/ruby-setup"
+    mode: "0555"
+- name: try to install using rbenv
+  block:
+    - name: Install Ruby via RBENV
+      ansible.builtin.shell:
+        cmd: |
+          rbenv install {{ rbenv.version}} 
+          rbenv global {{ rbenv.version}}
+      args:
+        executable: /bin/bash
+  rescue:
+    - name: Install Ruby using apt
+      ansible.builtin.apt:
+        pkg:
+          - ruby
+          - rubyenv
+          - ruby-rails
+- name: Install Bundler
+  community.general.gem:
+    name: bundler
+    state: present
+- name: Install Rails
+  community.general.gem:
+    name: bundler
+    version: "{{ rails.version }}"
+    state: present

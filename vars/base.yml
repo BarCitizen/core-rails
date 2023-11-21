@@ -1,4 +1,12 @@
 run:
-  user: ptg-user
+  user: root
 app:
   title: "{{ lookup('ansible.builtin.env', 'APP_TILE') }}"
+node:
+  version: "{{ lookup('ansible.builtin.env', 'NODE_VERSION') }}"
+  key_url: "{{ lookup('ansible.builtin.env', 'NODE_KEYURL') }}"
+rbenv:
+  dir: /usr/local/rbenv
+  version: "{{ lookup('ansible.builtin.env', 'RUBY_VERSION') }}"
+rails:
+  version: "{{ lookup('ansible.builtin.env', 'RAILS_VERSION') }}"

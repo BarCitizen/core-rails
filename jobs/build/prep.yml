@@ -1,0 +1,11 @@
+- name: Make dirs
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0555"
+  loop:
+    - "{{ rbenv.dir }}"
+    - /etc/apt/keyrings/
+
+
+
