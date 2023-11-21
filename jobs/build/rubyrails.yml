@@ -48,5 +48,6 @@
   when: not run.user == "root"
 - name: Install Gems
   shell: |
+    gem env home
     gem install bundler
     gem install rails -v {{ rails.version }}
