@@ -1,8 +1,7 @@
 [![Publish Docker image](https://github.com/PenguinCloud/project-template/actions/workflows/docker-image.yml/badge.svg)](https://github.com/PenguinCloud/core/actions/workflows/docker-image.yml) [![version](https://img.shields.io/badge/version-5.1.1-blue.svg)](https://semver.org) 
 
 # Project Overview
-<< This is a template. Copy this templated repository to make new projects. Once done, add a 1 paragraph introduction / elevator speech about your project.
->>
+This is a core image for launching Ruby on Rails and/or nodejs projects from!
 # Why this image vs others
 ## Built in self testing and healing
 All PTG builds have unit and dynamic tests as part of the build of their images, as well as during runtime to ensure the system keeps running as expected. If the system falls out of bounds of the test, the images have some self healing capabilities fix common minor problems.
@@ -10,7 +9,7 @@ All PTG builds have unit and dynamic tests as part of the build of their images,
 ## Secured... even if the software isn'template
 All PTG images under go a 8 stage security check to ensure not only is the PTG portion of the code secure, but to also identify and help remediate the underlying libraries and software security. 
 
-## Updated daily
+## Updated weekly
 All of our images are checked daily for updates from upstream sources.
 
 ## Designed for air-gapped or for internet facing
@@ -30,12 +29,12 @@ PTG relies on volunteer customers and community members to beta test images, ens
 
 # Contributors
 ## PTG
-Maintainer: creatorsemailhere@penguintech.group
+Maintainer: penguinz@penguintech.group
 General: info@penguintech.group
 
 ## community
 
-* Insert list of community collaborators
+* Segellion
 
 
 # Resources
