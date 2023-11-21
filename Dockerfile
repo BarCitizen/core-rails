@@ -18,7 +18,6 @@ ARG NODE_VERSION=20
 ARG NODE_KEYURL="https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key"
 ARG RBENV_ROOT=/usr/local/rbenv
 
-
 # BUILD IT!
 RUN ansible-playbook build.yml -c local
 

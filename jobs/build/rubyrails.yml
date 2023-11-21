@@ -35,12 +35,16 @@
           - ruby
           - rubyenv
           - ruby-rails
-- name: Install Bundler
-  community.general.gem:
-    name: bundler
-    state: present
-- name: Install Rails
-  community.general.gem:
-    name: bundler
-    version: "{{ rails.version }}"
-    state: present
+- name: Turn off docs
+  ansible.builtin.lineinfile:
+    path: /root/.gemrc
+    line: "gem: --no-document"
+- name: Turn off docs
+  ansible.builtin.lineinfile:
+    path: "/home/{{ run.user }}/.gemrc"
+    line: "gem: --no-document"
+  when: not run.user == "root"
+- name: Install Gems
+  shell: |
+    gem install bundler
+    gem install rails -v {{ rails.version }}
