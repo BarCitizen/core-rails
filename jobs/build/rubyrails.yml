@@ -28,6 +28,8 @@
           rbenv global {{ rbenv.version}}
       args:
         executable: /bin/bash
+      environment: 
+        MAKE_OPTS: -j4
   rescue:
     - name: Install Ruby using apt
       ansible.builtin.apt:
