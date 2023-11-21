@@ -1,0 +1,11 @@
+- name: Turn off docs
+  ansible.builtin.lineinfile:
+    path: /root/.gemrc
+    line: "gem: --no-document"
+    create: true
+- name: Turn off docs
+  ansible.builtin.lineinfile:
+    path: "/home/{{ run.user }}/.gemrc"
+    line: "gem: --no-document"
+    create: true
+  when: not run.user == "root"

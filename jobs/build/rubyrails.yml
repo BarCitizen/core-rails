@@ -19,37 +19,22 @@
     src: "{{ playbook_dir }}/templates/ruby-setup.j2"
     dest: "/usr/local/bin/ruby-setup"
     mode: "0555"
-- name: try to install using rbenv
-  block:
-    - name: Install Ruby via RBENV
-      ansible.builtin.shell:
-        cmd: |
-          rbenv install {{ rbenv.version }} 
-          rbenv global {{ rbenv.version }}
-      args:
-        executable: /bin/bash
-      environment: 
-        MAKE_OPTS: -j4
-  rescue:
-    - name: Install Ruby using apt
-      ansible.builtin.apt:
-        pkg:
-          - ruby
-          - rubyenv
-          - ruby-rails
-- name: Turn off docs
-  ansible.builtin.lineinfile:
-    path: /root/.gemrc
-    line: "gem: --no-document"
-    create: true
-- name: Turn off docs
-  ansible.builtin.lineinfile:
-    path: "/home/{{ run.user }}/.gemrc"
-    line: "gem: --no-document"
-    create: true
-  when: not run.user == "root"
+- name: Prepare to install Ruby
+  ansible.builtin.shell:
+    cmd: |
+      /usr/local/bin/ruby-setup
+
+- name: Install Ruby via RBENV
+  ansible.builtin.shell:
+    cmd: |
+      source /root/.bashrc
+      rbenv install {{ rbenv.version}} 
+      rbenv global {{ rbenv.version}}
+      rbenv rehash
+
 - name: Install Gems
-  shell: |
-    gem env home
-    gem install bundler
-    gem install rails -v {{ rails.version }}
+  ansible.builtin.shell:
+    cmd: |
+      source /root/.bashrc
+      gem install bundler
+      gem install rails -v {{ rails.version }}

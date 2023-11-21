@@ -1,7 +1,8 @@
 #!/bin/bash
-echo 'export PATH="{{ rbenv.dir }}/bin:$PATH"' >> ~/.bashrc
-eval "$(rbenv init -)" >> ~/.bashrc
-source ~/.bashrc
+echo 'export PATH="{{ rbenv.dir }}/bin:$PATH"' >> /root/.bashrc
+echo 'eval "$(rbenv init -)"' >> /root/.bashrc
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /root/.bashrc
 
-rbenv install {{ rbenv.version}} 
-rbenv global {{ rbenv.version}}
+
+
+
