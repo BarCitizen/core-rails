@@ -24,8 +24,8 @@
     - name: Install Ruby via RBENV
       ansible.builtin.shell:
         cmd: |
-          rbenv install {{ rbenv.version}} 
-          rbenv global {{ rbenv.version}}
+          rbenv install {{ rbenv.version }} 
+          rbenv global {{ rbenv.version }}
       args:
         executable: /bin/bash
       environment: 

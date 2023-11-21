@@ -10,13 +10,13 @@ WORKDIR /opt/manager
 
 # PUT YER ARGS in here
 ARG APP_TITLE="CORE-RAILS"
-ARG SECRET_KEY_BASE=defaultsecret
-ARG RUBY_VERSION=3.1.2
-ARG RAILS_ENV=production 
-ARG RAILS_VERSION=7.0.4
-ARG NODE_VERSION=20
+ARG SECRET_KEY_BASE="defaultsecret"
+ARG RUBY_VERSION="3.1.2"
+ARG RAILS_ENV="production" 
+ARG RAILS_VERSION="7.0.4"
+ARG NODE_VERSION="20"
 ARG NODE_KEYURL="https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key"
-ARG RBENV_ROOT=/usr/local/rbenv
+ARG RBENV_ROOT="/usr/local/rbenv"
 
 # BUILD IT!
 RUN ansible-playbook build.yml -c local
