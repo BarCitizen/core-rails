@@ -2,7 +2,6 @@
 - name: Make sure we have everything for ruby
   apt:
     pkg:
-      - ruby-build
       - libssl-dev
       - libreadline-dev 
       - zlib1g-dev 

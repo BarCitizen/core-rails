@@ -7,7 +7,6 @@
       - patch 
       - build-essential 
       - rustc 
-      - ruby-build
       - libssl-dev 
       - libyaml-dev 
       - libreadline6-dev 
