@@ -8,16 +8,4 @@
   become_user: root
   remote_user: root
   tasks:
-    - name: Build And Install
-      tags: build
-      include_tasks:
-        file: "jobs/build/{{ item }}.yml"
-        apply:
-          tags:
-            - build
-      loop:
-        - prep
-        - nodejs
-        - rbenv
-        - rubyrails
-        - passenger
+    

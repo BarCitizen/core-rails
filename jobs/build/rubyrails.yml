@@ -23,6 +23,8 @@
   ansible.builtin.shell:
     cmd: |
       /usr/local/bin/ruby-setup
+  args:
+    executable: /bin/bash
 
 - name: Install Ruby via RBENV
   ansible.builtin.shell:
@@ -38,3 +40,5 @@
       source /root/.bashrc
       gem install bundler
       gem install rails -v {{ rails.version }}
+  args:
+    executable: /bin/bash
