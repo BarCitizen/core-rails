@@ -11,7 +11,7 @@
     - name: Build And Install
       tags: build
       include_tasks:
-        file: "jobs/build/{{item}}.yml"
+        file: "jobs/build/{{ item }}.yml"
         apply:
           tags:
             - build

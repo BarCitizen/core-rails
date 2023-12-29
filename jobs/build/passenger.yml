@@ -2,13 +2,13 @@
 - name: Install Passenger Key
   shell:
     cmd: |
-      curl https://oss-binaries.phusionpassenger.com/auto-software-signing-gpg-key.txt | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/phusion.gpg 
+      curl https://oss-binaries.phusionpassenger.com/auto-software-signing-gpg-key.txt | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/phusion.gpg
 - name: Add Passenger Repo
   ansible.builtin.apt_repository:
     repo: deb https://oss-binaries.phusionpassenger.com/apt/passenger jammy main
     filename: passenger
 - name: install passenger and extra nginx modules
   ansible.builtin.apt:
-    pkg: 
+    pkg:
       - nginx-extras
       - passenger

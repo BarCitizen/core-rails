@@ -3,15 +3,15 @@
   apt:
     pkg:
       - libssl-dev
-      - libreadline-dev 
-      - zlib1g-dev 
-      - autoconf 
-      - bison 
-      - build-essential 
-      - libyaml-dev 
-      - libreadline-dev 
-      - libncurses5-dev 
-      - libffi-dev 
+      - libreadline-dev
+      - zlib1g-dev
+      - autoconf
+      - bison
+      - build-essential
+      - libyaml-dev
+      - libreadline-dev
+      - libncurses5-dev
+      - libffi-dev
       - libgdbm-dev
     state: latest
 - name: Drop setup script
@@ -28,7 +28,7 @@
   ansible.builtin.shell:
     cmd: |
       source /root/.bashrc
-      rbenv install {{ rbenv.version}} 
+      rbenv install {{ rbenv.version}}
       rbenv global {{ rbenv.version}}
       rbenv rehash
 
