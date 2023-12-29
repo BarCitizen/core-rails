@@ -6,6 +6,3 @@
   loop:
     - "{{ rbenv.dir }}"
     - /etc/apt/keyrings/
-
-
-
