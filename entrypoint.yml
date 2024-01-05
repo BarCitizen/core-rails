@@ -17,6 +17,7 @@
         - nodejs
         - easybutton
         - passenger
+        - security
 
     - name: Run And Configure
       tags: run

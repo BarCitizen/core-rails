@@ -1,0 +1,11 @@
+---
+- name: Install Security Tools
+  ansible.builtin.apt:
+    pkg:
+      - apparmor
+      - apparmor-profiles-extra
+      - apparmor-profiles
+      - fail2ban
+      - libmodsecurity3
+      - modsecurity-crs
+    state: latest
