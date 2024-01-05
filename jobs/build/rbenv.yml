@@ -30,9 +30,9 @@
     dest: "{{ rbenv.dir }}/plugins/ruby-build"
     single_branch: true
     version: master
-# - name: Setup symlinks for rbenv
-#  ansible.builtin.file:
-#    src: "{{ rbenv.dir }}/libexec/rbenv"
-#    dest: /usr/local/bin/rbenv
-#    mode: "0555"
-#    state: link
+- name: Setup symlinks for rbenv
+  ansible.builtin.file:
+    src: "{{ rbenv.dir }}/libexec/rbenv"
+    dest: /usr/local/bin/rbenv
+    mode: "0555"
+    state: link
