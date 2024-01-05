@@ -7,4 +7,5 @@
       - apparmor-profiles
       - fail2ban
       - libmodsecurity3
+      - modsecurity-crs
     state: latest
