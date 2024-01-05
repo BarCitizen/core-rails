@@ -38,7 +38,10 @@
   ansible.builtin.shell:
     cmd: |
       source /root/.bashrc
+      ruby -v
+      gem update --system
       gem install bundler
       gem install rails -v {{ rails.version }}
+
   args:
     executable: /bin/bash

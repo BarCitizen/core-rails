@@ -1,0 +1,37 @@
+---
+- name: Install Ruby and Rails from package
+  ansible.builtin.apt:
+    pkg:
+      - ruby
+      - ruby-dev
+      - ruby-rails
+      - autoconf
+      - patch
+      - build-essential
+      - rustc
+      - libssl-dev
+      - libyaml-dev
+      - libreadline6-dev
+      - zlib1g-dev
+      - libgmp-dev
+      - libncurses5-dev
+      - libffi-dev
+      - libgdbm6
+      - libgdbm-dev
+      - libdb-dev
+      - uuid-dev
+- name: Update Gems
+  ansible.builtin.shell:
+    cmd: |
+      ruby -v
+      gem update --system
+  ignore_errors: true
+- name: Install Bundler and rails
+  community.general.gem:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - bundler
+    - rails
+  async: 60
+  poll: 5
