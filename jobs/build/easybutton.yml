@@ -20,6 +20,7 @@
       - libgdbm-dev
       - libdb-dev
       - uuid-dev
+      - yarn
 - name: Update Gems
   ansible.builtin.shell:
     cmd: |
