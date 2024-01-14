@@ -18,7 +18,6 @@
       - libgdbm-dev
       - libdb-dev
       - uuid-dev
-      - yarn
 - name: "Get Ruby installer {{ ruby.installer.version }}"
   ansible.builtin.unarchive:
     src: "https://github.com/postmodern/ruby-install/archive/refs/tags/v{{ ruby.installer.version }}.tar.gz"

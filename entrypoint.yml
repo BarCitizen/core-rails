@@ -16,6 +16,7 @@
         - prep
         - nodejs
         - easybutton
+        - yarn
         - passenger
         - security
       loop_control:
