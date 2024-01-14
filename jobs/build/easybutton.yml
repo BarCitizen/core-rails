@@ -22,7 +22,7 @@
   ansible.builtin.unarchive:
     src: "https://github.com/postmodern/ruby-install/archive/refs/tags/v{{ ruby.installer.version }}.tar.gz"
     dest: /opt
-    remote_src: yes
+    remote_src: true
 - name: "Install Ruby Installer {{ ruby.installer.version }}"
   ansible.builtin.command: make install -j8
   args:
@@ -31,11 +31,6 @@
   ansible.builtin.command: "ruby-install --system ruby {{ ruby.version}}"
   args:
     chdir: "/opt/ruby-install-{{ ruby.installer.version }}"
-#- name: Install remaining packages
-#  ansible.builtin.apt:
-#    pkg:
-#     - ruby-dev
-#     - ruby-rails
 - name: Update Gems
   ansible.builtin.shell:
     cmd: |
