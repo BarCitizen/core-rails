@@ -24,6 +24,7 @@
   ansible.builtin.unarchive:
     src: "https://github.com/postmodern/ruby-install/archive/refs/tags/v{{ ruby.installer.version }}.tar.gz"
     dest: /usr/local
+    remote_src: yes
 - name: Rename Folder
   ansible.builtin.command: "mv /usr/local/ruby-install-{{ ruby.installer.version }} /usr/local/ruby-install"
 - name: Install Ruby
