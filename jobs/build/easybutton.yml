@@ -25,8 +25,14 @@
     src: "https://github.com/postmodern/ruby-install/archive/refs/tags/v{{ ruby.installer.version }}.tar.gz"
     dest: /usr/local
     remote_src: yes
-- name: Rename Folder
+- name: Rename expanded folder to standard
   ansible.builtin.command: "mv /usr/local/ruby-install-{{ ruby.installer.version }} /usr/local/ruby-install"
+- name: Link ruby-install
+  ansible.builtin.file:
+    src: /usr/local/ruby-install/bin/ruby-install
+    dest: /usr/local/bin/ruby-install
+    mode: "0555"
+    state: link
 - name: Install Ruby
   ansible.builtin.shell:
     cmd: |
