@@ -2,9 +2,9 @@
 - name: Install Ruby and Rails from package
   ansible.builtin.apt:
     pkg:
-      - ruby
-      - ruby-dev
-      - ruby-rails
+#      - ruby
+#      - ruby-dev
+#      - ruby-rails
       - autoconf
       - patch
       - build-essential
@@ -20,13 +20,22 @@
       - libgdbm-dev
       - libdb-dev
       - uuid-dev
-      - yarn
+- name: Get Ruby installer
+  ansible.builtin.unarchive:
+    src: "https://github.com/postmodern/ruby-install/archive/refs/tags/v{{ ruby.installer.version }}.tar.gz"
+    dest: /usr/local
+- name: Rename Folder
+  ansible.builtin.command: "mv /usr/local/ruby-install-{{ ruby.installer.version }} /usr/local/ruby-install"
+- name: Install Ruby
+  ansible.builtin.shell:
+    cmd: |
+      ruby-install --system ruby {{ ruby.version}}
+
 - name: Update Gems
   ansible.builtin.shell:
     cmd: |
       ruby -v
       gem update --system
-  ignore_errors: true
 - name: Install Bundler and rails
   community.general.gem:
     name: "{{ item }}"

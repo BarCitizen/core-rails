@@ -5,8 +5,10 @@ app:
 node:
   version: "{{ lookup('ansible.builtin.env', 'NODE_VERSION', default='20') }}"
   key_url: "{{ lookup('ansible.builtin.env', 'NODE_KEYURL', default='https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key') }}"
-rbenv:
+ruby:
   dir: /root/.rbenv
   version: "{{ lookup('ansible.builtin.env', 'RUBY_VERSION', default='3.2.2') }}"
+  installer:
+    version: 0.9.3
 rails:
   version: "{{ lookup('ansible.builtin.env', 'RAILS_VERSION', default='7.0.4') }}"
