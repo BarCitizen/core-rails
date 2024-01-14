@@ -1,5 +1,5 @@
 ---
-- name: PROJECT NAME
+- name: BarCitizen Core
   hosts: localhost
   connection: local
   vars_files:
@@ -18,8 +18,9 @@
         - easybutton
         - passenger
         - security
-
-    - name: Run And Configure
-      tags: run
-      include_tasks:
-        file: jobs/run/run.yml
+      loop_control:
+        loop_var: job_name
+#    - name: Run And Configure
+#      tags: run
+#      include_tasks:
+#        file: jobs/run/run.yml
