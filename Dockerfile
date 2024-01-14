@@ -12,11 +12,11 @@ WORKDIR /opt/manager
 ARG APP_TITLE="CORE-RAILS"
 ARG SECRET_KEY_BASE="defaultsecret"
 ARG RUBY_VERSION="3.2.2"
+ARG RUBY_INSTALLER_VERSION="0.9.3"
 ARG RAILS_ENV="production" 
 ARG RAILS_VERSION="7.0.4"
 ARG NODE_VERSION="20"
 ARG NODE_KEYURL="https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key"
-ARG RBENV_ROOT="/usr/local/rbenv"
 
 # BUILD IT!
 RUN ansible-playbook entrypoint.yml -c local --tags build

@@ -9,6 +9,6 @@ ruby:
   dir: /root/.rbenv
   version: "{{ lookup('ansible.builtin.env', 'RUBY_VERSION', default='3.2.2') }}"
   installer:
-    version: 0.9.3
+    version: "{{ lookup('ansible.builtin.env', 'RUBY_INSTALLER_VERSION', default='0.9.3') }}"
 rails:
   version: "{{ lookup('ansible.builtin.env', 'RAILS_VERSION', default='7.0.4') }}"
