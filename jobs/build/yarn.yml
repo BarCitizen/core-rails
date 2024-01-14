@@ -1,0 +1,15 @@
+---
+- name: Install Yarn Key
+  ansible.builtin.apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+
+- name: Install Yarn Apt Repo
+  ansible.builtin.apt_repository:
+    repo: "deb https://dl.yarnpkg.com/debian/ stable main"
+    state: present
+    filename: yarn
+
+- name: Install Yarn
+  ansible.builtin.apt:
+    name: yarn
+    state: latest
