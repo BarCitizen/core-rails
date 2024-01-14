@@ -1,10 +1,8 @@
 ---
 - name: Install Ruby and Rails from package
   ansible.builtin.apt:
+    state: latest
     pkg:
-#      - ruby
-#      - ruby-dev
-#      - ruby-rails
       - autoconf
       - patch
       - build-essential
@@ -20,24 +18,24 @@
       - libgdbm-dev
       - libdb-dev
       - uuid-dev
-- name: Get Ruby installer
+- name: "Get Ruby installer {{ ruby.installer.version }}"
   ansible.builtin.unarchive:
     src: "https://github.com/postmodern/ruby-install/archive/refs/tags/v{{ ruby.installer.version }}.tar.gz"
-    dest: /usr/local
+    dest: /opt
     remote_src: yes
-- name: Rename expanded folder to standard
-  ansible.builtin.command: "mv /usr/local/ruby-install-{{ ruby.installer.version }} /usr/local/ruby-install"
-- name: Link ruby-install
-  ansible.builtin.file:
-    src: /usr/local/ruby-install/bin/ruby-install
-    dest: /usr/local/bin/ruby-install
-    mode: "0555"
-    state: link
-- name: Install Ruby
-  ansible.builtin.shell:
-    cmd: |
-      ruby-install --system ruby {{ ruby.version}}
-
+- name: "Install Ruby Installer {{ ruby.installer.version }}"
+  ansible.builtin.command: make install -j8
+  args:
+    chdir: "/opt/ruby-install-{{ ruby.installer.version }}"
+- name: "Install Ruby {{ ruby.version}}"
+  ansible.builtin.command: "ruby-install --system ruby {{ ruby.version}}"
+  args:
+    chdir: "/opt/ruby-install-{{ ruby.installer.version }}"
+#- name: Install remaining packages
+#  ansible.builtin.apt:
+#    pkg:
+#     - ruby-dev
+#     - ruby-rails
 - name: Update Gems
   ansible.builtin.shell:
     cmd: |
